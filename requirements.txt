@@ -1,0 +1,3 @@
+pywin32>=305
+tqdm>=4.65.0
+git+https://github.com/Drahmue/ahlib.git
