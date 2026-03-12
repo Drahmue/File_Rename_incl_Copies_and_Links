@@ -188,10 +188,24 @@ To prevent worker processes from re-executing initialization code:
 
 ## Future Enhancements
 
-- Add error handling for file access issues during rename operations
-- Implement dry-run mode for testing
+### High Priority
+
+- Add comprehensive error handling for file access issues during rename operations
+- Implement dry-run mode for testing without actual file modifications
 - Add option to refresh file list during execution
-- Cross-platform support for non-.lnk shortcuts
-- Better handling of file conflicts
-- Add undo functionality
+
+### Medium Priority
+
+- Implement wildcard processing for pattern-based file selection
+- Tool to check for broken links in .lnk files
+- Undo function based on log file analysis
+- Better handling of file name conflicts
 - Support for regex-based rename patterns
+
+### Low Priority / Ideas
+
+- Cross-platform support for non-.lnk shortcuts
+- GUI mode with full visual interface
+- Batch operation scheduling
+- Integration with file versioning systems
+- Export operation reports to CSV/Excel
