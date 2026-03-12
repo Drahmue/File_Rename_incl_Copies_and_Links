@@ -236,9 +236,6 @@ def choose_filename_and_replacementname(default_path):
 
     file_path = filedialog.askopenfilename(initialdir=default_path)
     if file_path:
-        # Zeige den ausgewählten Dateinamen an
-        #print("Ausgewählte Datei:", file_path)
-
         # Extrahiere den ursprünglichen Dateinamen ohne Pfad
         original_filename = os.path.basename(file_path)
 
@@ -250,18 +247,20 @@ def choose_filename_and_replacementname(default_path):
 
         # Speichere den neuen Dateinamen in einer Variable
         if new_filename:
-            #print("Neuer Dateiname gespeichert:", new_filename)
+            root.destroy()
             return file_path, new_filename
-
         else:
             print("Kein neuer Dateiname eingegeben.")
     else:
         print("Keine Datei ausgewählt.")
 
+    root.destroy()
+
 def choose_filename_with_path():
     root = tk.Tk()
     root.withdraw()  # Verstecke das Hauptfenster
     file_path = filedialog.askopenfilename()
+    root.destroy()
     if file_path:
         return file_path
     else:
@@ -273,7 +272,7 @@ def choose_filename_with_path():
 def show_selection_box(prompt1, prompt2):
     def handle_selection(selection):
         root.selection = selection
-        root.destroy()  # Schließe das Hauptfenster
+        root.quit()  # Stoppt die Mainloop sauber
 
     root = tk.Tk()
     root.title("Optionenauswahl")
@@ -294,7 +293,9 @@ def show_selection_box(prompt1, prompt2):
     root.geometry(f"{window_width}x{window_height}+{x_pos}+{y_pos}")
 
     root.mainloop()
-    return getattr(root, 'selection', 'Keine Auswahl')
+    selection = getattr(root, 'selection', 'Keine Auswahl')
+    root.destroy()
+    return selection
 
 
 def show_preview_window(old_name, new_name, files_to_rename, links_to_adjust):
